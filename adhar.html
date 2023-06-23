@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+>
+  <head>
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-container">
+        <div class="header-logo-left">
+          <img
+                    src="img/uidai_english_logo.svg"
+                    class="uidaiLogo"
+                    alt="uidai-logo"
+            />
+        </div>
+        <div class="header-logo-right">
+          <img
+            src="img/aadhaar_english_logo.svg"
+            class="aadhaarLogo"
+            alt="aadhaar-logo"
+          />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <!-- <div class="login-section__title">
+            <img
+              src="../static/img/aadhaar_english_logo.svg"
+              class="aadhaarLogo"
+              alt="aadhaar-logo"
+            />
+            <span>Authenticate using Aadhaar Number</span>
+        </div> -->
+
+        <div class="main-message" id="main-message"></div>
+
+        <form
+          autocomplete="off"
+          action="/login"
+          method="post"
+          class="login-form"
+          id="login-form"
+        ><input type="hidden" name="_csrf" value="fed9c285-9330-4656-b484-2e52b824bb5a"/>
+          <div class="input-container">
+            <label class="input-label" for="uid">
+              <input
+                id="uid"
+                name="uid"
+                type="text"
+                class="form-input js_form-input"
+                maxlength="12"
+                onkeypress="return onlyNumberKey(event)"
+              />
+              <span class="label-span">Enter Aadhaar</span>
+            </label>
+          </div>
+
+          <span class="error-message" id="uid-error-message"></span>
+
+          <div class="block">
+            <div class="captcha" id="captcha_block" readonly disabled></div>
+            <div class="line"></div>
+            <button
+              style="
+                border: none;
+                background: none;
+                cursor: pointer;
+                outline: none;
+              "
+              onclick="generateCaptchaFunc()"
+              type="button"
+              class="fa fa-refresh icon-style"
+              aria-hidden="true"
+            ></button>
+          </div>
+
+          <div class="input-container">
+            <label class="input-label" for="captcha">
+              <input
+                id="captcha"
+                name="captcha"
+                type="text"
+                class="form-input js_form-input"
+                maxlength="5"
+              />
+              <span class="label-span">Enter Above Captcha</span>
+            </label>
+          </div>
+
+          <span class="error-message" id="captcha-error-message"></span>
+
+          <button
+            class="btn sub-btn"
+            onclick="generateOTP()"
+            id="submit-btn"
+            type="button"
+            disabled
+          >
+            <span id="submit-btn-text"> Send OTP </span>
+            <i
+              id="spinner"
+              class="fa fa-spinner fa-spin"
+              style="display: none; float: left"
+            ></i>
+          </button>
+
+          <span class="resend-otp" id="resend-otp" style="display: none"></span>
+          <div class="otp-message" id="otp-message"></div>
+          <div class="input-container">
+            <label class="input-label" for="otp">
+              <input
+                id="otp"
+                name="otp"
+                type="text"
+                class="form-input js_form-input"
+                maxlength="6"
+                onkeypress="return onlyNumberKey(event)"
+                disabled
+              />
+              <span class="label-span">Enter OTP</span>
+            </label>
+          </div>
+
+          <span class="error-message" id="otp-error-message"></span>
+
+          <button
+            class="btn"
+            id="submit"
+            disabled
+            name="submit"
+            type="submit"
+            value="Login"
+          >
+            Login
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <footer id="footerHeight">
+      <p class="copyright-text">
+        Copyright © 2020 Unique Identification Authority of India All Rights
+        Reserved
+      </p>
+    </footer>
+    <script type="text/javascript" src="/js/login.js"></script>
+  </body>
+</html>
